@@ -73,6 +73,10 @@ show_bayesian_outputs <- function(bayesian){
       "% of these are the wrong sign (Type S error)\n", sep="")
 }
 
+
+
+# Run the example
+
 sigma <- 1
 tau <- .5
 N <- 1e6
