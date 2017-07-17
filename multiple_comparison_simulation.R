@@ -21,7 +21,7 @@ calculate_classical_outputs <- function(sigma, sim_data) {
   significant = abs(sim_data$y) > 2 * sigma
   classical <- data.frame(
     num_of_exclusions = sum(significant),
-    percentage_of_exclusions = as.numeric(fround(100 * mean(significant), 1)),
+    percentage_of_exclusions = as.numeric(fround(100 * mean(significant), 2)),
     mean_absolute_value_for_estimates = as.numeric(fround(mean(abs(sim_data$y)[significant]), 2)),
     mean_absolute_value_for_true_parameters = as.numeric(fround(mean(abs(sim_data$theta)[significant]), 2)),
     percentage_of_wrong_sign = as.numeric(fround(100 * mean((sign(sim_data$theta) != sign(sim_data$y))[significant]), 1))
@@ -52,10 +52,10 @@ calculate_bayesian_outputs <- function(sigma, tau, sim_data) {
   
   bayesian <- data.frame(
     num_posterior_interval_exclusions = sum(significant),
-    percentage_exclusions = as.numeric(fround(100 * mean(significant), 1)),
+    percentage_exclusions = as.numeric(fround(100 * mean(significant), 2)),
     mean_estimates = as.numeric(fround(mean(abs(theta_hat)[significant]), 2)),
     mean_absolute_value_true_parameters = as.numeric(fround(mean(abs(sim_data$theta)[significant]), 2)),
-    percentage_of_wrong_sign = as.numeric(fround(100 * mean((sign(sim_data$theta) != sign(theta_hat))[significant]), 1))
+    percentage_of_wrong_sign = as.numeric(fround(100 * mean((sign(sim_data$theta) != sign(theta_hat))[significant]), 2))
   )
   
   return(bayesian)
